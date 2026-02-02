@@ -71,8 +71,8 @@
 }
 
 
-@media (max-width:768px){
+@media screen and (max-width:768px){
     .modalChild {
-        width: 90%;
+        width: 95%;
     }
 }
