@@ -29,7 +29,7 @@ export default function Modal({ modalCheckfun }) {
                     <div className={style.modalForm}>
 
                         <form onSubmit={handleModalSubmit}>
-
+        
                             <label htmlFor='title'>Title</label> <br />
                             <input type="text" name="title" maxLength={50} id="title" /> <br /> <br />
 
