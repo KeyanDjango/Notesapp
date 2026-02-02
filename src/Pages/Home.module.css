@@ -1,0 +1,38 @@
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+.topBar>h1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: bold;
+}
+
+.addNoteBtn {
+    padding: 0.6rem 1.2rem;
+    margin-right: 10px;
+    background-color: #8c90ff;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+.plusIconBtn{
+    font-size: 1.1rem;
+    position: relative;
+    top: 2px;
+    right: 10px;
+}
+
+.addNoteBtn:hover {
+    opacity: 0.8;
+}
+
+
+.addColorBtn{
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    
+}
