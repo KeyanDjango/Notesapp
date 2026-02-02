@@ -38,14 +38,42 @@
     width: 100%;
     padding: 1rem;
     margin: 10px 0;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
 }
+
+.modalForm>form>input:focus { 
+    border:2px solid #7277f6;
+
+}
+
+.modalForm>form>input:hover { 
+    border:2px solid #7277f6;
+
+}
+
 
 .modalForm>form>textarea {
     width: 100%;
     resize: none;
     padding: 1rem;
     margin: 10px 0;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px;
 }
+
+.modalForm>form>textarea:focus { 
+    border:2px solid #7277f6;
+
+}
+
+.modalForm>form>textarea:hover { 
+    border:2px solid #7277f6;
+
+}
+
 
 .modalBtns{
     margin-top: 10px;
