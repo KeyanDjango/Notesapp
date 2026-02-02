@@ -10,7 +10,6 @@
 }
 
 .modalChild {
-    height: 50%;
     width: 30%;
     background-color: white;
     border-radius: 10px;
@@ -74,5 +73,12 @@
 @media screen and (max-width:768px){
     .modalChild {
         width: 95%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .modalChild {
+        width: 90%;
+        
     }
 }
