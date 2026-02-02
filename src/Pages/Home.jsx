@@ -5,14 +5,16 @@ import { FaAdjust } from "react-icons/fa";
 import { FaPlusCircle } from "react-icons/fa";
 import Modal from './Modal';
 import Card from './Card';
+import axios from 'axios';
 
 
 export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
+    const [notedata, setNotesData] = useState([]);
     function handleModalOpen() {
         setModalCheck(!modalCheck)
     }
-
+    // MODAL POP SCREEN FREEZE ==================================>
     useEffect(() => {
         if (modalCheck) {
             document.body.style.overflow = 'hidden';
@@ -27,6 +29,25 @@ export default function Home() {
     }, [modalCheck]);
 
 
+    // GETTING  DATA ==================================>
+
+    async function handleRetriveData() {
+        const response = await axios.get('http://127.0.0.1:8000/api/crud');
+        console.log(response.data);
+        setNotesData(response.data);
+
+    }
+
+    // GETTING  DATA (useEffect) ==================================>
+    useEffect(() => {
+        handleRetriveData();
+    }, []);
+
+
+
+
+
+
     return (
         <>
             {/* TOP BAR */}
@@ -38,12 +59,12 @@ export default function Home() {
                     <button className={style.addColorBtn}><FaAdjust /></button>
                 </div>
             </div>
-            
+
             {/* MODAL PAGE */}
 
-            {modalCheck && <Modal modalCheckfun={handleModalOpen} />}
+            {modalCheck && <Modal handleRetriveData={handleRetriveData} modalCheckfun={handleModalOpen} />}
 
-            <Card />
+            <Card notedata={notedata} />
 
 
         </>
