@@ -38,11 +38,15 @@
     padding: 0.3rem;
     display: flex;
     justify-content: space-between;
+    position: relative;
 
 }
 
 .cardEditBtns {
     visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .cardData:hover .cardEditBtns {

@@ -8,6 +8,9 @@ import Card from './Card';
 import axios from 'axios';
 import { MdDelete } from "react-icons/md";
 
+const local = 'http://127.0.0.1:8000/'
+const server = 'https://notesappapi-m3nt.onrender.com'
+
 export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
     const [notedata, setNotesData] = useState([]);
@@ -32,7 +35,7 @@ export default function Home() {
     // GETTING  DATA ==================================>
 
     async function handleRetriveData() {
-        const response = await axios.get('http://127.0.0.1:8000/api/crud');
+        const response = await axios.get(`${server}/api/crud`);
         console.log(response.data);
         setNotesData(response.data);
 
@@ -46,10 +49,10 @@ export default function Home() {
     // DELETE ALL  DATA  ==================================>
 
     async function handleDeleteAll() {
-        await axios.delete('http://127.0.0.1:8000/api/crud');
+        await axios.delete(`${server}/api/crud`);
         handleRetriveData();
         alert("Success!\n\nAll data deleted successfully.");
-        
+
     }
 
     return (
@@ -74,7 +77,7 @@ export default function Home() {
 
             {modalCheck && <Modal handleRetriveData={handleRetriveData} modalCheckfun={handleModalOpen} />}
 
-            <Card notedata={notedata} />
+            <Card notedata={notedata} handleRetriveData={handleRetriveData} />
 
 
         </>

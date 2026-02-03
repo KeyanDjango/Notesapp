@@ -2,8 +2,9 @@ import React from 'react';
 import style from './Card.module.css';
 import { MdDelete } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
+import axios from 'axios';
 
-export default function Card({ notedata }) {
+export default function Card({ notedata,handleRetriveData }) {
     const dataCard = [
         { title: 'Atomic Habit Summary', content: '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione' },
         { title: 'Atomic Habit Summary', content: '   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostr Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus rationeum nam qui possimus necessitatibus ratione     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione' },
@@ -20,6 +21,13 @@ export default function Card({ notedata }) {
 
 
     ]
+
+    async function handleDeleteOne(item) {
+        //  const deleteOne = await axios.delete(`http://127.0.0.1:8000/api/delete/${item.id}/`);
+        const deleteOne = await axios.delete(`https://notesappapi-m3nt.onrender.com/${item.id}/`);
+        handleRetriveData();
+        alert(`Success! \n \n ${item.title} Data deleted successfully`);
+    }
     return (
         <>
             <div className={style.cardParent}>
@@ -32,8 +40,8 @@ export default function Card({ notedata }) {
                             <h3>{item.title}</h3>
 
                             <div className={style.cardEditBtns}>
-                                <button className={style.cardEditBtnDelete}><MdDelete className={style.cardEditBtnDeleteIcon}/></button>
-                                <button className={style.cardEditBtn}><FaRegEdit className={style.cardEditBtnEditIcon}/></button>
+                                <button className={style.cardEditBtnDelete} onClick={() => handleDeleteOne(item)}><MdDelete className={style.cardEditBtnDeleteIcon} /></button>
+                                <button className={style.cardEditBtn}><FaRegEdit className={style.cardEditBtnEditIcon} /></button>
 
                             </div>
 
