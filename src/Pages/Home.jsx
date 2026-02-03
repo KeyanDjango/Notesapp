@@ -35,7 +35,8 @@ export default function Home() {
     // GETTING  DATA ==================================>
 
     async function handleRetriveData() {
-        const response = await axios.get(`${server}/api/crud`);
+        // const response = await axios.get('http://127.0.0.1:8000/api/crud');
+        const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud');
         console.log(response.data);
         setNotesData(response.data);
 
@@ -49,7 +50,8 @@ export default function Home() {
     // DELETE ALL  DATA  ==================================>
 
     async function handleDeleteAll() {
-        await axios.delete(`${server}/api/crud`);
+        // await axios.delete(`http://127.0.0.1:8000/api/crud`);
+        await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
         handleRetriveData();
         alert("Success!\n\nAll data deleted successfully.");
 
