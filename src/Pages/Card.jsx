@@ -1,7 +1,9 @@
 import React from 'react';
 import style from './Card.module.css';
+import { MdDelete } from "react-icons/md";
+import { FaRegEdit } from "react-icons/fa";
 
-export default function Card({notedata}) {
+export default function Card({ notedata }) {
     const dataCard = [
         { title: 'Atomic Habit Summary', content: '        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione' },
         { title: 'Atomic Habit Summary', content: '   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostr Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus rationeum nam qui possimus necessitatibus ratione     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quam non hic quo id, nostrum nam qui possimus necessitatibus ratione' },
@@ -23,8 +25,21 @@ export default function Card({notedata}) {
             <div className={style.cardParent}>
 
                 {notedata.map((item) => (
+
                     <div className={style.cardData} key={item.id}>
-                        <h3>{item.title}</h3>
+
+                        <div className={style.cardEdit}>
+                            <h3>{item.title}</h3>
+
+                            <div className={style.cardEditBtns}>
+                                <button className={style.cardEditBtnDelete}><MdDelete className={style.cardEditBtnDeleteIcon}/></button>
+                                <button className={style.cardEditBtn}><FaRegEdit className={style.cardEditBtnEditIcon}/></button>
+
+                            </div>
+
+                        </div>
+
+
                         <p>{item.content}</p>
                     </div>
                 ))}

@@ -6,7 +6,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import Modal from './Modal';
 import Card from './Card';
 import axios from 'axios';
-
+import { MdDelete } from "react-icons/md";
 
 export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
@@ -43,10 +43,14 @@ export default function Home() {
         handleRetriveData();
     }, []);
 
+    // DELETE ALL  DATA  ==================================>
 
-
-
-
+    async function handleDeleteAll() {
+        await axios.delete('http://127.0.0.1:8000/api/crud');
+        handleRetriveData();
+        alert("Success!\n\nAll data deleted successfully.");
+        
+    }
 
     return (
         <>
@@ -58,6 +62,12 @@ export default function Home() {
                     <button className={style.addNoteBtn} onClick={handleModalOpen}><FaPlusCircle className={style.plusIconBtn} />Add Note</button>
                     <button className={style.addColorBtn}><FaAdjust /></button>
                 </div>
+            </div>
+
+            {/* Delete All */}
+            <div className={style.homeDeleteAll}>
+                <button className={style.deleteNoteBtn} onClick={handleDeleteAll}><MdDelete className={style.plusIconBtn} />Delete All</button>
+
             </div>
 
             {/* MODAL PAGE */}

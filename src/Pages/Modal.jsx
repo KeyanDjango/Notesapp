@@ -73,6 +73,8 @@ export default function Modal({ modalCheckfun,handleRetriveData }) {
                         <IoIosClose onClick={modalCheckfun} className={style.modalCloseBtn} />
                     </div>
 
+                    
+
                     {/* FORM */}
 
                     <div className={style.modalForm}>

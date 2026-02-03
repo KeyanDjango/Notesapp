@@ -18,6 +18,20 @@
     font-size: 1rem;
 }
 
+.deleteNoteBtn{
+    padding: 0.6rem 1.2rem;
+    margin-right: 10px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+.homeDeleteAll{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .plusIconBtn{
     font-size: 1.1rem;
     position: relative;

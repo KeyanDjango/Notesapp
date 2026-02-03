@@ -21,10 +21,53 @@
     overflow: auto;
 }
 
-
-
-.cardData > p {
-  margin-top: 10px;
-  overflow-wrap: break-word; /* modern & safe */
+.cardData>h3 {
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    /* modern & safe */
 }
 
+
+.cardData>p {
+    margin-top: 10px;
+    overflow-wrap: break-word;
+    /* modern & safe */
+}
+
+.cardEdit {
+    padding: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.cardEditBtns {
+    visibility: hidden;
+}
+
+.cardData:hover .cardEditBtns {
+    visibility: visible;
+}
+
+.cardEditBtnDelete {
+    margin: 0 10px;
+    border: none;
+
+}
+
+.cardEditBtnDeleteIcon {
+    font-size: 1.2rem;
+    margin: 0 5px;
+
+}
+
+.cardEditBtnEditIcon {
+    font-size: 1.2rem;
+    background-color: aliceblue;
+
+}
+
+.cardEditBtn {
+    padding: 1px;
+    border: none;
+}
