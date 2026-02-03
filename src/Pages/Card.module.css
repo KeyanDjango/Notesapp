@@ -4,10 +4,11 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 .cardData {
-    width: 20rem;
+    width: 25rem;
     max-height: 20rem;
     overflow: hidden;
     border: 1px solid black;
@@ -38,15 +39,14 @@
     padding: 0.3rem;
     display: flex;
     justify-content: space-between;
-    position: relative;
+    
+   
 
 }
 
 .cardEditBtns {
     visibility: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
+    
 }
 
 .cardData:hover .cardEditBtns {
