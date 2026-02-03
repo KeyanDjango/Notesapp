@@ -20,7 +20,7 @@ function reducerNote(state, action) {
     }
 }
 
-export default function Modal({ modalCheckfun,handleRetriveData }) {
+export default function Modal({ selectText, setselectText, handleModalOpen, setModalCheck, handleRetriveData, editCheck, setEditCheck }) {
 
     const [state, dispatch] = useReducer(reducerNote, initialNote);
 
@@ -29,21 +29,35 @@ export default function Modal({ modalCheckfun,handleRetriveData }) {
     async function handleModalSubmit(e) {
         e.preventDefault();
 
-        try {
-
-            // const response = await axios.post('http://127.0.0.1:8000/api/crud', {
-            const response = await axios.post('https://notesappapi-m3nt.onrender.com/api/crud', {
+        if (editCheck) {
+            const { id, title, content } = selectText;
+            const updateData = await axios.put(`http://127.0.0.1:8000/api/update/${id}/`, {
                 title: state.title,
                 content: state.content
             });
-            alert('Data saved successfully');
-            modalCheckfun();
+            handleModalOpen();
             handleRetriveData();
+            alert('Data updated successfully');
+        } else {
+            try {
 
-        } catch (error) {
-            console.log(error);
+                const response = await axios.post('http://127.0.0.1:8000/api/crud', {
+                // const response = await axios.post('https://notesappapi-m3nt.onrender.com/api/crud', {
+                    title: state.title,
+                    content: state.content
+                });
 
+                handleModalOpen();
+                handleRetriveData();
+                alert('Data saved successfully');
+
+            } catch (error) {
+                console.log(error);
+
+            }
         }
+
+
     }
 
     function handleInputChange(e) {
@@ -54,6 +68,31 @@ export default function Modal({ modalCheckfun,handleRetriveData }) {
         });
     }
 
+    function handleClose() {
+        handleModalOpen();
+        setEditCheck(false)
+    }
+
+    function handleCancel() {
+        handleModalOpen();
+        setEditCheck(false)
+    }
+
+    useEffect(() => {
+        if (!selectText || !editCheck) return;
+
+        dispatch({
+            type: 'HANDLE_SET',
+            field: 'title',
+            value: selectText.title
+        });
+
+        dispatch({
+            type: 'HANDLE_SET',
+            field: 'content',
+            value: selectText.content
+        });
+    }, [selectText, editCheck]);
 
 
 
@@ -71,10 +110,10 @@ export default function Modal({ modalCheckfun,handleRetriveData }) {
                     <div className={style.modalTop}>
                         <h2>Add New Note</h2>
 
-                        <IoIosClose onClick={modalCheckfun} className={style.modalCloseBtn} />
+                        <IoIosClose onClick={() => handleClose()} className={style.modalCloseBtn} />
                     </div>
 
-                    
+
 
                     {/* FORM */}
 
@@ -90,8 +129,8 @@ export default function Modal({ modalCheckfun,handleRetriveData }) {
 
 
                             <div className={style.modalBtns}>
-                                <input type='reset' value='Cancel' onClick={modalCheckfun} className={style.modalBtnCancel} />
-                                <input type='submit' value='Save note' className={style.modalBtnSave} />
+                                <input type='reset' value='Cancel' onClick={() => handleCancel()} className={style.modalBtnCancel} />
+                                <input type='submit' value={editCheck ? 'Update note' : 'Add note'} className={style.modalBtnSave} />
                             </div>
 
                         </form>

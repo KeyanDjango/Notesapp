@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import '../App.css';
 import style from './Home.module.css';
 import { FaAdjust } from "react-icons/fa";
@@ -14,6 +14,8 @@ const server = 'https://notesappapi-m3nt.onrender.com'
 export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
     const [notedata, setNotesData] = useState([]);
+    const [editCheck, setEditCheck] = useState(false);
+    const[selectText,setselectText] = useState(null);
     function handleModalOpen() {
         setModalCheck(!modalCheck)
     }
@@ -35,8 +37,8 @@ export default function Home() {
     // GETTING  DATA ==================================>
 
     async function handleRetriveData() {
-        // const response = await axios.get('http://127.0.0.1:8000/api/crud');
-        const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud');
+        const response = await axios.get('http://127.0.0.1:8000/api/crud');
+        // const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud');
         console.log(response.data);
         setNotesData(response.data);
 
@@ -45,13 +47,15 @@ export default function Home() {
     // GETTING  DATA (useEffect) ==================================>
     useEffect(() => {
         handleRetriveData();
+        
     }, []);
+
 
     // DELETE ALL  DATA  ==================================>
 
     async function handleDeleteAll() {
-        // await axios.delete(`http://127.0.0.1:8000/api/crud`);
-        await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
+        await axios.delete(`http://127.0.0.1:8000/api/crud`);
+        // await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
         handleRetriveData();
         alert("Success!\n\nAll data deleted successfully.");
 
@@ -77,9 +81,23 @@ export default function Home() {
 
             {/* MODAL PAGE */}
 
-            {modalCheck && <Modal handleRetriveData={handleRetriveData} modalCheckfun={handleModalOpen} />}
+            {modalCheck &&
+                <Modal editCheck={editCheck}
+                    setEditCheck={setEditCheck}
+                    handleRetriveData={handleRetriveData}
+                    handleModalOpen={handleModalOpen}
+                    selectText={selectText}
+                    setselectText = {setselectText}
+                    />}
 
-            <Card notedata={notedata} handleRetriveData={handleRetriveData} />
+            <Card notedata={notedata}
+                modalCheck={modalCheck}
+                handleModalOpen={handleModalOpen}
+                editCheck={editCheck}
+                setEditCheck={setEditCheck}
+                handleRetriveData={handleRetriveData}
+                setselectText = {setselectText}
+                />
 
 
         </>
