@@ -31,6 +31,9 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
 
         if (editCheck) {
             const { id, title, content } = selectText;
+
+            // const updateData = await axios.put(`https://notesappapi-m3nt.onrender.com/api/update/${id}/`, {
+
             const updateData = await axios.put(`http://127.0.0.1:8000/api/update/${id}/`, {
                 title: state.title,
                 content: state.content
@@ -41,8 +44,8 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
         } else {
             try {
 
-                const response = await axios.post('http://127.0.0.1:8000/api/crud', {
-                // const response = await axios.post('https://notesappapi-m3nt.onrender.com/api/crud', {
+                // const response = await axios.post('http://127.0.0.1:8000/api/crud', {
+                    const response = await axios.post('https://notesappapi-m3nt.onrender.com/api/crud', {
                     title: state.title,
                     content: state.content
                 });
