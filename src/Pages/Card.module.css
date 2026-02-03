@@ -15,6 +15,7 @@
     padding: 1.2rem;
     border-radius: 10px;
     background-color: aliceblue;
+    position: relative;
 
 }
 
@@ -39,14 +40,13 @@
     padding: 0.3rem;
     display: flex;
     justify-content: space-between;
-    
-   
 
 }
 
 .cardEditBtns {
     visibility: hidden;
-    
+    position: absolute;
+    right: 10px;
 }
 
 .cardData:hover .cardEditBtns {
@@ -74,4 +74,15 @@
 .cardEditBtn {
     padding: 1px;
     border: none;
+}
+
+@media (max-width: 480px) {
+    .cardEditBtnDeleteIcon,
+    .cardEditBtnEditIcon {
+        font-size: 1rem;  /* smaller icons */
+    }
+
+    .cardData {
+        width: 90%;       /* fit mobile screen */
+    }
 }
