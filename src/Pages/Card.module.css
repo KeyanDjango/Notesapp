@@ -4,20 +4,25 @@
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
-    
+
+}
+
+.cardData:hover {
+    transform: scale(1.02);
+    /* slightly bigger */
 }
 
 .cardData {
     width: 25rem;
     max-height: 20rem;
     overflow: hidden;
-    
+
     padding: 1.2rem;
     border-radius: 10px;
     background-color: honeydew;
     position: relative;
-    box-shadow: 5px 8px 13px black ;
-
+    box-shadow: 2px 5px 10px black;
+    transition-property: width, height;
 }
 
 .cardData:hover {
@@ -78,12 +83,15 @@
 }
 
 @media (max-width: 480px) {
+
     .cardEditBtnDeleteIcon,
     .cardEditBtnEditIcon {
-        font-size: 1rem;  /* smaller icons */
+        font-size: 1rem;
+        /* smaller icons */
     }
 
     .cardData {
-        width: 90%;       /* fit mobile screen */
+        width: 90%;
+        /* fit mobile screen */
     }
 }

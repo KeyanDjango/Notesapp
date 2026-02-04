@@ -5,7 +5,7 @@ import { FaRegEdit } from "react-icons/fa";
 import axios from 'axios';
 import Modal from './Modal';
 
-export default function Card({ notedata, handleRetriveData, setEditCheck, editCheck, modalCheck, handleModalOpen,setselectText }) {
+export default function Card({ notedata, handleRetriveData, setEditCheck, editCheck, modalCheck, handleModalOpen, setselectText }) {
 
     async function handleDeleteOne(item) {
 
@@ -26,7 +26,7 @@ export default function Card({ notedata, handleRetriveData, setEditCheck, editCh
         handleModalOpen();
         setEditCheck(true)
         setselectText(item);
-        
+
     }
     return (
         <>
@@ -53,8 +53,8 @@ export default function Card({ notedata, handleRetriveData, setEditCheck, editCh
                 ))}
 
             </div>
-           
-            
+
+
         </>
     );
 }
