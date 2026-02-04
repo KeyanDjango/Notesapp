@@ -29,6 +29,16 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
     async function handleModalSubmit(e) {
         e.preventDefault();
 
+        if(state.title.trim() === ''){
+            alert('Warning\n \n Enter title something')
+            return;
+        }
+
+        if(state.content.trim() === ''){
+            alert('Warning\n \n Enter content something')
+            return;
+        }
+
         if (editCheck) {
             const { id, title, content } = selectText;
 

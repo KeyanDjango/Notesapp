@@ -7,10 +7,6 @@
 
 }
 
-.cardData:hover {
-    transform: scale(1.02);
-    /* slightly bigger */
-}
 
 .cardData {
     width: 25rem;
@@ -22,8 +18,15 @@
     background-color: honeydew;
     position: relative;
     box-shadow: 2px 5px 10px black;
-    transition-property: width, height;
+    transition-property: transform;
+    transition-duration: 1s;
 }
+
+.cardData:hover {
+    transform: scale(1.02);
+    /* slightly bigger */
+}
+
 
 .cardData:hover {
     overflow: auto;
