@@ -15,7 +15,7 @@ export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
     const [notedata, setNotesData] = useState([]);
     const [editCheck, setEditCheck] = useState(false);
-    const[selectText,setselectText] = useState(null);
+    const [selectText, setselectText] = useState(null);
     function handleModalOpen() {
         setModalCheck(!modalCheck)
     }
@@ -47,17 +47,26 @@ export default function Home() {
     // GETTING  DATA (useEffect) ==================================>
     useEffect(() => {
         handleRetriveData();
-        
+
     }, []);
 
 
     // DELETE ALL  DATA  ==================================>
 
     async function handleDeleteAll() {
-        // await axios.delete(`http://127.0.0.1:8000/api/crud`);
-        await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
-        handleRetriveData();
-        alert("Success!\n\nAll data deleted successfully.");
+
+        const deletealldialog = window.confirm('Do you want to delete all data?');
+
+        if (deletealldialog) {
+            // await axios.delete(`http://127.0.0.1:8000/api/crud`);
+            await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
+            handleRetriveData();
+            alert("Success!\n\nAll data deleted successfully.");
+        }else{
+            console.log('Deletion all canceled');
+            
+        }
+
 
     }
 
@@ -87,8 +96,8 @@ export default function Home() {
                     handleRetriveData={handleRetriveData}
                     handleModalOpen={handleModalOpen}
                     selectText={selectText}
-                    setselectText = {setselectText}
-                    />}
+                    setselectText={setselectText}
+                />}
 
             <Card notedata={notedata}
                 modalCheck={modalCheck}
@@ -96,8 +105,8 @@ export default function Home() {
                 editCheck={editCheck}
                 setEditCheck={setEditCheck}
                 handleRetriveData={handleRetriveData}
-                setselectText = {setselectText}
-                />
+                setselectText={setselectText}
+            />
 
 
         </>
