@@ -46,8 +46,14 @@ export default function Home() {
 
     // GETTING  DATA (useEffect) ==================================>
     useEffect(() => {
-        handleRetriveData();
 
+        const getdata = setInterval(() => {
+            handleRetriveData();
+        }, 5000)
+
+        return () => {
+            clearInterval(getdata);
+        }
     }, []);
 
 
@@ -62,9 +68,9 @@ export default function Home() {
             await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
             handleRetriveData();
             alert("Success!\n\nAll data deleted successfully.");
-        }else{
+        } else {
             console.log('Deletion all canceled');
-            
+
         }
 
 
