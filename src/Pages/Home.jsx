@@ -46,14 +46,7 @@ export default function Home() {
 
     // GETTING  DATA (useEffect) ==================================>
     useEffect(() => {
-
-        const getdata = setInterval(() => {
-            handleRetriveData();
-        }, 5000)
-
-        return () => {
-            clearInterval(getdata);
-        }
+        handleRetriveData();
     }, []);
 
 
