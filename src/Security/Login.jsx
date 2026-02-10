@@ -26,7 +26,7 @@ export default function Login() {
         }
 
         try {
-            const res = await axios.post("http://localhost:8000/api/login/", {
+            const res = await axios.post("https://notesappapi-m3nt.onrender.com/api/login/", {
                 email: loginState.email,
                 password: loginState.password,
             });

@@ -18,7 +18,7 @@ export default function Register() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8000/api/register/", {
+            await axios.post("https://notesappapi-m3nt.onrender.com/api/register/", {
                 username:regState.username,
                 password:regState.password,
                 email:regState.email,
