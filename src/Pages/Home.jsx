@@ -37,12 +37,12 @@ export default function Home() {
 
     // GETTING  DATA ==================================>
 
-    // async function handleRetriveData() {
-    //     const response = await axios.get('http://127.0.0.1:8000/api/crud', {
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //         }
-    //     });
+    async function handleRetriveData() {
+        // const response = await axios.get('http://127.0.0.1:8000/api/crud', {
+        //     headers: {
+        //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //     }
+        // });
         const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud', {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
