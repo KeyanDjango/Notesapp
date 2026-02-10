@@ -7,6 +7,7 @@ import Modal from './Modal';
 import Card from './Card';
 import axios from 'axios';
 import { MdDelete } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 const local = 'http://127.0.0.1:8000/'
 const server = 'https://notesappapi-m3nt.onrender.com'
@@ -17,6 +18,9 @@ export default function Home() {
     const [notedata, setNotesData] = useState([]);
     const [editCheck, setEditCheck] = useState(false);
     const [selectText, setselectText] = useState(null);
+
+    const navigate = useNavigate();
+    
     function handleModalOpen() {
         setModalCheck(!modalCheck)
     }
