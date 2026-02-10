@@ -99,7 +99,7 @@ export default function Home() {
 
     const logout = () => {
         localStorage.removeItem("token");
-        window.location = "/";
+        navigate("/", { replace: true });
     };
 
 
