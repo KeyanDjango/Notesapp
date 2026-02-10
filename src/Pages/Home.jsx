@@ -111,7 +111,7 @@ export default function Home() {
 
                 <div>
                     <button className={style.addNoteBtn} onClick={handleModalOpen}><FaPlusCircle className={style.plusIconBtn} />Add Note</button>
-                    <button className={style.addColorBtn}><FaAdjust /></button>
+                    
                 </div>
             </div>
 
@@ -122,8 +122,8 @@ export default function Home() {
             </div>
 
             {/* Log Out */}
-            <div className={style.homeDeleteAll}>
-                <button className={style.deleteNoteBtn} onClick={logout}>Log Out</button>
+            <div className={style.homeDeleteLogOut}>
+                <button className={style.logOutNoteBtn} onClick={logout}>Log Out</button>
 
             </div>
 

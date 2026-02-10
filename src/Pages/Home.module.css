@@ -3,14 +3,15 @@
     justify-content: space-between;
     padding: 1rem;
 }
-.topBar>h1{
+
+.topBar>h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-weight: bold;
 }
 
 .addNoteBtn {
     padding: 0.6rem 1.2rem;
-    margin-right: 10px;
+    margin-right: 3px;
     background-color: #8c90ff;
     border: none;
     color: white;
@@ -18,7 +19,7 @@
     font-size: 1rem;
 }
 
-.deleteNoteBtn{
+.deleteNoteBtn {
     padding: 0.6rem 1.2rem;
     margin-right: 10px;
     background-color: red;
@@ -27,12 +28,29 @@
     border-radius: 7px;
     font-size: 1rem;
 }
-.homeDeleteAll{
+
+.homeDeleteAll {
     display: flex;
     justify-content: flex-end;
 }
 
-.plusIconBtn{
+.homeDeleteLogOut {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logOutNoteBtn {
+    padding: 0.6rem 1.2rem;
+    margin-right: 10px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    font-size: 1rem;
+    margin: 10px;
+}
+
+.plusIconBtn {
     font-size: 1.1rem;
     position: relative;
     top: 2px;
@@ -44,9 +62,9 @@
 }
 
 
-.addColorBtn{
+.addColorBtn {
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
     border-radius: 5px;
-    
+
 }
