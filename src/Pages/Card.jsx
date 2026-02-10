@@ -14,8 +14,16 @@ export default function Card({ notedata, handleRetriveData, setEditCheck, editCh
         if (dialogvar) {
             try {
                 console.log(item.id);
-                //  const deleteOne = await axios.delete(`http://127.0.0.1:8000/api/delete/${item.id}/`);
-                const deleteOne = await axios.delete(`https://notesappapi-m3nt.onrender.com/api/delete/${item.id}/`);
+                // // const deleteOne = await axios.delete(`http://127.0.0.1:8000/api/delete/${item.id}/`, {
+                //     headers: {
+                //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+                //     }
+                // });
+                const deleteOne = await axios.delete(`https://notesappapi-m3nt.onrender.com/api/delete/${item.id}/`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    }
+                });
                 handleRetriveData();
                 alert(`Success! \n \n ${item.title} Data deleted successfully`);
             } catch (error) {
@@ -23,8 +31,8 @@ export default function Card({ notedata, handleRetriveData, setEditCheck, editCh
 
             }
         } else {
-                console.log('Delete canceled');
-                
+            console.log('Delete canceled');
+
         }
 
 

@@ -1,0 +1,73 @@
+.registerParent {
+    width: 100%;
+    height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerChild {
+    width: 30rem;
+    border: 1px solid black;
+    padding: 1.2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 6px 8px 15px black;
+}
+
+.registerChild>h1 {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.registerChild>form>label {
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.registerChild>form>input {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    outline: none;
+    margin-top: 10px;
+}
+
+.registerBtns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.registerBtns {
+    width: 100%;
+}
+
+.registersubmit {
+    width: 40%;
+    margin: 10px 0;
+    padding: .8rem;
+    color: white;
+    border: none;
+    background-color: #0c6cda;
+    border-radius: 5px;
+}
+
+.registerCancel {
+    width: 40%;
+    margin: 10px 0;
+    padding: .5rem;
+    color: white;
+    border: 1px solid black;
+    border: none;
+    background-color: #0c6cda;
+    border-radius: 5px;
+}
+
+
+@media (max-width:768px) {
+    .registerChild {
+        width: 90%;
+    }
+}

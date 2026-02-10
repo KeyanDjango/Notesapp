@@ -13,6 +13,7 @@ const server = 'https://notesappapi-m3nt.onrender.com'
 
 export default function Home() {
     const [modalCheck, setModalCheck] = useState(false);
+    const [msg, setMsg] = useState("");
     const [notedata, setNotesData] = useState([]);
     const [editCheck, setEditCheck] = useState(false);
     const [selectText, setselectText] = useState(null);
@@ -37,8 +38,16 @@ export default function Home() {
     // GETTING  DATA ==================================>
 
     async function handleRetriveData() {
-        // const response = await axios.get('http://127.0.0.1:8000/api/crud');
-        const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud');
+        const response = await axios.get('http://127.0.0.1:8000/api/crud', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            }
+        });
+        // const response = await axios.get('https://notesappapi-m3nt.onrender.com/api/crud', {
+        //             headers: {
+        //                 Authorization: `Bearer ${localStorage.getItem("token")}`,
+        //             }
+        //         });
         console.log(response.data);
         setNotesData(response.data);
 
@@ -57,8 +66,16 @@ export default function Home() {
         const deletealldialog = window.confirm('Do you want to delete all data?');
 
         if (deletealldialog) {
-            // await axios.delete(`http://127.0.0.1:8000/api/crud`);
-            await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`);
+            // await axios.delete(`http://127.0.0.1:8000/api/crud`, {
+            //     headers: {
+            //         Authorization: `Bearer ${localStorage.getItem("token")}`,
+            //     }
+            // });
+            await axios.delete(`https://notesappapi-m3nt.onrender.com/api/crud`, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    }
+                });
             handleRetriveData();
             alert("Success!\n\nAll data deleted successfully.");
         } else {
@@ -68,6 +85,23 @@ export default function Home() {
 
 
     }
+
+    // Security  ==================================>
+
+    useEffect(() => {
+        axios.get("https://notesappapi-m3nt.onrender.com/api/home/", {
+        // axios.get("http://localhost:8000/api/home/", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        });
+    }, []);
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        window.location = "/";
+    };
+
 
     return (
         <>
@@ -86,6 +120,13 @@ export default function Home() {
                 <button className={style.deleteNoteBtn} onClick={handleDeleteAll}><MdDelete className={style.plusIconBtn} />Delete All</button>
 
             </div>
+
+            {/* Log Out */}
+            <div className={style.homeDeleteAll}>
+                <button className={style.deleteNoteBtn} onClick={logout}>Log Out</button>
+
+            </div>
+
 
             {/* MODAL PAGE */}
 

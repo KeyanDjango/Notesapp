@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useState } from 'react';
 import style from './Modal.module.css';
 import { IoIosClose } from "react-icons/io";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const initialNote = {
     title: '',
@@ -23,18 +24,19 @@ function reducerNote(state, action) {
 export default function Modal({ selectText, setselectText, handleModalOpen, setModalCheck, handleRetriveData, editCheck, setEditCheck }) {
 
     const [state, dispatch] = useReducer(reducerNote, initialNote);
+    const navigate = useNavigate();
 
 
     // POSTING DATA ==================================>
     async function handleModalSubmit(e) {
         e.preventDefault();
 
-        if(state.title.trim() === ''){
+        if (state.title.trim() === '') {
             alert('Warning\n \n Enter title something')
             return;
         }
 
-        if(state.content.trim() === ''){
+        if (state.content.trim() === '') {
             alert('Warning\n \n Enter content something')
             return;
         }
@@ -42,15 +44,27 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
         if (editCheck) {
             const { id, title, content } = selectText;
 
-            const updateData = await axios.put(`https://notesappapi-m3nt.onrender.com/api/update/${id}/`, {
+            
+            try {
+                const updateData = await axios.put(`https://notesappapi-m3nt.onrender.com/api/update/${id}/`, {
+                // const updateData = await axios.put(`http://127.0.0.1:8000/api/update/${id}/`, {
+                    title: state.title,
+                    content: state.content
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    }
+                });
+                handleModalOpen();
+                handleRetriveData();
+                alert('Data updated successfully');
+            } catch (error) {
+                console.log(error);
+                alert("Unauthorized or error occurred");
+                navigate("/")
 
-            // const updateData = await axios.put(`http://127.0.0.1:8000/api/update/${id}/`, {
-                title: state.title,
-                content: state.content
-            });
-            handleModalOpen();
-            handleRetriveData();
-            alert('Data updated successfully');
+            }
+
         } else {
             try {
 
@@ -58,6 +72,10 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
                     const response = await axios.post('https://notesappapi-m3nt.onrender.com/api/crud', {
                     title: state.title,
                     content: state.content
+                }, {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    }
                 });
 
                 handleModalOpen();
@@ -65,7 +83,10 @@ export default function Modal({ selectText, setselectText, handleModalOpen, setM
                 alert('Data saved successfully');
 
             } catch (error) {
+
                 console.log(error);
+                alert("Unauthorized or error occurred");
+                navigate("/")
 
             }
         }
